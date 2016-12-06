@@ -4,8 +4,8 @@
  * and on the examples here:
  * https://github.com/dustin/go-coap
  *
- * A COAP echo is constituted by a confirmable message,
- * which this server will confirm, sending back the content it received.
+ * A COAP confirmable message will be picked up by this server
+ * and confirmed to the recipient along with the content received.
  */
  
 package main
@@ -71,7 +71,7 @@ func main() {
     log.SetFlags(log.LstdFlags)
     
     // Say what we're doing
-    fmt.Printf("Responding to COAP packets (e.g. confirmable messages) received on port %s.\n", *pPort)
+    fmt.Printf("Echoing COAP confirmable messages received on port %s.\n", *pPort)
     
     // Run the server
     err := coap.ListenAndServe("udp", ":" + *pPort, coap.FuncHandler(coapHandler))
